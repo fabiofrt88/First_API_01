@@ -2,21 +2,19 @@ package com.develhope.First.API1;
 
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/name")
 public class NameController {
 
-    @GetMapping("/")
+    @GetMapping("")
     public String get() {
         System.out.println("The name was called");
         return "Fabio";
     }
 
-    @PostMapping(value = "{name}")
+    @PostMapping(value = "/{name}")
     public String post(@PathVariable String name){
         StringBuilder reverseName = new StringBuilder(name);
         reverseName.reverse();
@@ -24,8 +22,7 @@ public class NameController {
         return reverseName.toString();
     }
 
-
-
-
-
-}
+    // Su postman
+    //   (GET) localhost:8080/name
+    //   (POST) localhost:8080/name/Fabio
+ }
